@@ -3,7 +3,7 @@
 		"message": "SourTools"
 	},
     "appDescript": {
-        "message": "A multitool for me personally."
+        "message": "A multi-tools with a few cool tools for web security recon, text conversion and custom info gathering."
     },
 	 "webToolReqFail": {
 		"message": "Couldn't retrieve data!\n"
