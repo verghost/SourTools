@@ -1,0 +1,58 @@
+{
+	"manifest_version": 2,
+	"name": "__MSG_appName__",
+	"author": "Verghost",
+	"version": "0.94",
+	"default_locale": "en",
+	"description": "__MSG_appDescript__",
+	
+	"permissions": ["<all_urls>", "webNavigation", "activeTab", "tabs", "storage", "dns"],
+	
+	"icons": {
+		"64": "img/icons/64.png",
+		"48": "img/icons/48.png",
+		"32": "img/icons/32.png",
+		"16": "img/icons/16.png"
+	},
+	
+	"web_accessible_resources": [
+	  "img/play.gif",
+	  "img/pause.gif"
+	],
+	
+	"browser_action": {
+		"browser_style": true,
+		"default_area": "tabstrip",
+		"default_icon": {
+			"16": "img/icons/16.png",
+			"32": "img/icons/32.png"
+		},
+		"default_title": "SourTools"
+	},
+	
+	"sidebar_action": {
+		"default_icon": {
+			"16": "img/icons/16.png",
+			"32": "img/icons/32.png"
+		},
+		"default_title": "__MSG_appName__",
+		"default_panel": "html/home.html",
+		"open_at_install": false
+	},
+	
+	"background": {
+		"page":  "background.html"
+	},
+	
+	"options_ui": {
+		"page": "html/settings.html",
+		"open_in_tab": true
+	},
+	
+	"browser_specific_settings": {
+	  "gecko": {
+		"id": "{3e85b6c5-b2b4-4d7a-9552-b9c37a2389be}",
+		"strict_min_version": "74.0"
+	  }
+	}
+}

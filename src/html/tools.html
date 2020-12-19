@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SourBar</title>
+		<link rel="stylesheet" type="text/css" href="/styles/sourbar.css">
+		<link rel="stylesheet" type="text/css" href="/styles/resultbox.css">
+		<style>
+			#webtools-status {
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				height: auto;
+				align-items: center;
+				justify-content: flex-start;
+			}
+			.status {
+				text-align: center;
+				margin-top: 10px;
+			}/*
+			#resultbox .resultbox-box {
+				min-width: 300px;
+				min-height: 100px;
+			}*/
+			.icon-loading {
+				position: relative;
+				top: 5px;
+				width: 28px;
+				height: 28px;
+			}
+			.webtools{
+				overflow: hidden;
+			}
+			.tablink {
+				text-align: center;
+				background-color: black;
+				color: white;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 10px 15px;
+				font-family: "Courier New";
+				font-size: 13px;
+				width: 100%;
+			}
+			.tablink:hover {
+				background-color: #777;
+			}
+			.tabcontent {
+				color: white;
+				display: none;
+				padding: 5px;
+				text-align: center;
+			}
+			#default { background-color: black; display: block; }
+			
+			#wtui {
+				transition-property: opacity;
+				transition-duration: 200ms;
+			}
+			
+			#tool-screen { overflow: scroll; }
+			.screen { width: 100%; resize: none; }
+			
+			@media all and (max-width: 300px) {
+				#resultbox .resultbox-box { max-width: 200px; }
+				.screen { height: 260px; resize: none; }
+			}
+			@media all and (max-width: 220px) { /* Shrink buttons */
+				.conf-btn {
+					width: max-content;
+				}
+				#resultbox .resultbox-box { max-width: 150px; }
+				.screen { height: 220px; resize: none; }
+				.screen-btn { border: 2px solid black; margin-bottom: 5px; width: 58px; height: 25px; font-size: 9px; padding-bottom: 20px; }
+			}
+			#spider-settings {
+				text-align: left;
+				margin-left: 20%;
+				margin-right: 20%;
+			}
+			#spider-settings select, input { width: 100%; }
+			#control-btns { width: 100%; text-align: center; }
+			.control-btn { width: 45%; }
+			.screen-btn { border: 2px solid black; margin-bottom: 5px; }
+			.updated { background-color: #1c4547; }
+			.open { border-bottom: 2px solid white; }
+		</style>
+	</head>
+	<body id="sourbody" class="webtools">
+
+	<div id="default" class="tabcontent">
+		<h3 align="center">Web Tools</h3>
+		<p id="defaultMsg" align="center" class="wtMsg"></p>
+	</div>
+
+	<div id="robobust" class="tabcontent">
+		<h3 align="center">Robobust</h3>
+		<p id="robobustMsg" align="center" class="wtMsg"></p>
+	</div>
+	
+	<div id="dirbuster" class="tabcontent">
+		<h3 align="center">Dirbuster</h3>
+		<p id="dirbusterMsg" align="center" class="wtMsg"></p>
+	</div>
+	
+	<div id="spider" class="tabcontent">
+		<h3 align="center">Sour Spider</h3>
+		<p id="spiderMsg" align="center" class="wtMsg"></p>
+		<div id="spider-settings">
+			<label>Module: </label>
+			<select id="spider-dropdown">
+				<option id="spider-option" value="" selected></option>
+			</select>
+			<br>
+			<label>Isolate: </label>
+			<select id="spider-isolate">
+				<option id="isolate-na" value="" selected></option>
+				<option id="isolate-false" value="false">false</option>
+				<option id="isolate-true" value="true">true</option>
+			</select>
+			<br>
+			<label>MaxLayer: </label><input placeholder='0 -> "inf"' id="spider-maxlayer" type="text"></input>
+			<label>MaxPages: </label><input placeholder='1 -> "inf"' id="spider-maxpages" type="text"></input>
+		</div>
+	</div>
+	
+	<div id="cfetch" class="tabcontent">
+		<h3 align="center">Custom Fetch</h3>
+		<p id="cfetchMsg" align="center" class="wtMsg"></p>
+	</div>
+
+	<button class="tablink" id="btn-robo">Robobust</button>
+	<button class="tablink" id="btn-dirb">Dirbuster</button>
+	<button class="tablink" id="btn-spid">Sour Spider</button>
+	<button class="tablink" id="btn-cfetch">Custom Fetch</button>
+
+	<div id="webtools-status" class="status">
+		<b id="status-text">Status: Idle</b>
+		<img id="loading" hidden="true" class="icon-loading" src="/img/loading.gif"></img>
+		<b id="status-progress" style="text-align: center;"></b>
+		<div id="resultbox" style="margin-top: 20px; margin-bottom: 10px; margin-left: 10px; margin-right: 10px; max-width: 0px; max-height: 0px; min-height: 0px; flex-shrink: 2;" class="resultbox">
+			<div id="resultbox-conf" style="align-self: center; position: inherit; " class="resultbox-box">
+				<div class="resultbox-drag" draggable="true"></div>
+				<div style="text-align: center;" class="resultbox-result">
+					<b id="conf-msg"></b><br>
+					<input id="input-conf" type="text" style="display: none;">
+					<a id="btn-conf-left" class="button-small conf-btn" style="display: none;"></a>
+					<a id="btn-conf-right" class="button-small conf-btn" style="display: none;"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="wtui">
+		<div id="screen-btns">
+			<a id="btn-runner" class="button-small screen-btn open">Runner</a>
+			<a id="btn-tool" class="button-small screen-btn">Tool</a>
+		</div>
+		<textarea id="runner-screen" class="screen" align="center" rows="16" cols="32" readOnly="true" spellcheck="false" wrap="on"></textarea>
+		<textarea id="tool-screen" class="screen" style="display: none;" align="center" rows="16" cols="32" readOnly="true" spellcheck="false" wrap="off"></textarea>
+		<div id="control-btns">
+			<a id="btn-run" class="button-small control-btn">Run</a>
+			<a id="btn-back" class="button-small control-btn">Back</a>
+		</div>
+	</div>
+	<a id="lnk-back" style="display: none;"></a>
+	
+	<script src="/lib/sourlib.js"></script>
+	<script src="/lib/sha.js"></script>
+	<script src="../js/sourspider.js"></script>
+	<script src="../js/ssmodules.js"></script>
+	<script src="../js/runner.js"></script>
+
+	</body>
+</html>

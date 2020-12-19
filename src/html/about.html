@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>About SouTools</title>
+		<link rel="shortcut icon" type="image/png" href="/img/icons/16.png">
+		<link rel="stylesheet" type="text/css" href="/styles/sourbar.css">
+		<style>
+			* { font-size: 18px; }
+			strong { font-size: 19px; }
+			p, li { font-size: 16px; }
+			ul { list-style: disc; }
+			.ol-none { list-style: none; margin: 0px; padding: 0px; }
+			.ol-none li { }
+		</style>
+	</head>
+	<body id="sourbody">
+		<h1 style="font-size: 22px; border-bottom: 1px solid;">About This Web Extension:</h1>
+		
+		<p><strong>Spider:</strong> A simple web spider that currently has the following modules</p>
+		<ul>
+			<li><b>DOM-XSS</b>: Detects (potential) DOM-based XSS using the methodology outlined <a href="http://www.webappsec.org/projects/articles/071105.shtml">here</a></li>
+			<li><b>Mailman</b>: Searches for email addresses using regex; additional info <a href="https://www.regular-expressions.info/email.html">here</a></li>
+			<li><b>Dircheck</b>: Searches for indexable directories (directory listings) by checking for the classic \"Index of\" title tag.</li>
+			<li><b>FileFinder</b>: Finds files by filtering file extensions (i.e. doc, cpp, exe, zip, etc...)</li>
+			<li><b>MediaFinder</b>: Finds media by filtering file extensions (i.e. mp3, mp4, jpg, png, etc...)</li>
+			<li><b>KeyFinder</b>: Finds API keys and other secrets by using a list of regex rules as well as entropy to find random-looking data.</li>
+		</ul>
+		
+		<p><strong>Robobust:</strong> A tool built to test the program (It&#39;s pretty useless). It requests paths found in a website's robots.txt file.</p>
+
+		<p><strong>Dirbuster:</strong> Bruteforces directories and files names on web servers.</p>
+		<ul>
+			<li>Lists should be formatted with # denoting a comment and each directory/filename on its own separate line.</li>
+			<li>Each path in the list is normalized to include a preceding slash (not a trailing one, although those can be explicitly included).</li>
+			<li>
+			Example Dirbuster list:
+			<ol class="ol-none">
+				<li>/root</li>
+				<li>#this is a comment</li>
+				<li>/admin</li>
+				<li>/cgi-bin/</li>
+			</ol>
+			</li>
+		</ul>
+
+		<p><strong>Custom Fetch:</strong> Fetches resources specified by the user by requesting a url, then isolating a target from the result.</p>
+		<ul>
+			<li>Resources can be added and toggled on/off in the settings.</li>
+			<li>The syntax for targets is: <b>NAME:INDEX{REGEX}</b>. <br>
+			REGEX is matched to a result and the first match is chosen.<br>
+			NAME and INDEX have different purposes based on which response type is specified:</li>
+			<ul>
+				<li>HTML: Uses PARSED_DOCUMENT.<a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll">querySelectorAll</a>(NAME)[INDEX] to choose a target, so the standard query selector syntax (i.e. #ID, .CLASSNAME, TAGNAME) should be used. Default value of INDEX is 0.</li>
+				<li>JSON: Target is selected by PARSED_JSON_OBJECT[NAME]. When PARSED_JSON_OBJECT[NAME] is an array and INDEX is supplied, we can specify further is used to further specify. In the case where INDEX is not specified, arrays and groups will be stringified.</li>
+				<ul>
+					<li>NAME: Used to identify the target. The purpose of this part is different depending on which response type is specified.</li>
+					<li>INDEX:  Default value is 0.</li>
+				</ul>
+			</ul>
+			<li>Replacements can be specified for target and url fields to insert info based on where the web tool is run:
+				<ul>
+					<li>HOST;N = current host (i.e. some.website.com)</li>
+					<li>HOST;WP = current host with protocol (i.e. https://some.website.com)</li>
+					<li>HOST;IP = current ip address</li>
+					<li>HOST;URL = current URL (i.e. https://some.website.com/search?q=somesearch)</li>
+					<li>HOST;D = current domain name (i.e. website.com)</li>
+				</ul>
+				For url only: INPUT;TYPE causes input to be accepted (TYPE can be "text" or "num").
+			</li>
+		</ul>
+
+		<p><strong>Tutils (Text Utils)</strong></p>
+		<ul>
+			<li>Remove Spaces, Reverse string</li>
+			<li>URI/URL Encode/Decode</li>
+			<li>BASE64 Encode/Decode UTF-16</li>
+			<li>ROT13 Encode/Decode</li>
+			<li>SHA-1, SHA-256, SHA-384, SHA-512</li>
+			<li>MD5</li>
+			<li>Beautify JS and CSS</li>
+			<li>XSS and SQLi string encoding from Firefox Hackbar</li>
+		</ul>
+	</body>
+</html>

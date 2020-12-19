@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SourBar</title>
+		<link rel="stylesheet" type="text/css" href="/styles/sourbar.css">
+		<style>
+			.tutils-txt{
+				width: 100%;
+				transition: box-shadow .1s ease-in,border .1s ease-in;
+				line-height: 1.5;
+			}
+		</style>
+	</head>
+	<body id="sourbody">
+	<div>
+		<h2>Text Utils</h2>
+
+		<div><a id="general-icon">🔽</a> <b>General</b></div>
+		<div id="general-btns" style="display: none;">
+			<a id='btn-wsrmv' class='button-small'>No Space</a>
+			<a id='btn-rvrs' class='button-small'>Reverse</a>
+		</div>
+
+		<div><a id="url-icon">🔽</a> <b>URL/URI</b></div>
+		<div id="url-btns" style="display: none;">
+			<a id='btn-e-url' class='button-small'>Encode</a>
+			<a id='btn-d-url' class='button-small'>Decode</a>
+		</div>
+
+		<div><a id="b64-icon">🔽</a> <b>BASE64</b></div> <!-- (UTF-16) -->
+		<div id="b64-btns" style="display: none;">
+			<a id='btn-e-b64' class='button-small'>Encode</a>
+			<a id='btn-d-b64' class='button-small'>Decode</a>
+		</div>
+
+		<div><a id="r13-icon">🔽</a> <b>ROT13</b></div>
+		<div id="r13-btns" style="display: none;">
+			<a id='btn-e-r13' class='button-small'>Enc/Dec</a>
+		</div>
+
+		<div><a id="sha-icon">🔽</a> <b>SHA</b></div>
+		<div id="sha-btns" style="display: none;">
+			<a id='btn-e-sha1' class='button-small'>SHA 1</a> 
+			<a id='btn-e-sha256' class='button-small'>SHA 256</a>
+			<a id='btn-e-sha384' class='button-small'>SHA 384</a>
+			<a id='btn-e-sha512' class='button-small'>SHA 512</a>
+		</div>
+
+		<div><a id="md5-icon">🔽</a> <b>MD5</b></div>
+		<div id="md5-btns" style="display: none;">
+			<a id='btn-e-md5' class='button-small'>Encode</a>
+		</div>
+
+		<div><a id="beautify-icon">🔽</a> <b>Beautify</b></div>
+		<div id="beautify-btns" style="display: none;">
+			<a id='btn-beautify-js' class='button-small'>JS/JSON</a>
+			<a id='btn-beautify-css' class='button-small'>CSS</a>
+		</div>
+
+		<!-- <div><a id="compress-icon">🔽</a> <b>Code Compression</b></div> -->
+			<!-- <div id="compress-btns" style="display: none;"> -->
+			<!-- <a id='btn-compress-js' class='button-small'>JS</a> -->
+		<!-- </div> -->
+
+		<div><a id="xss-icon">🔽</a> <b>XSS</b></div>
+		<div id="xss-btns" style="display: none;">
+			<a id='btn-e-xss-sfcc' class='button-small'>XSS SFCC</a>
+			<a id='btn-e-xss-html' class='button-small'>XSS HTML</a>
+		</div>
+
+		<div><a id="sqlic-icon">🔽</a> <b>SQLi Chars</b></div>
+		<div id="sqlic-btns" style="display: none;">
+		<a id='btn-sqlic-mysql' class='button-small'>MySQL</a>
+		<a id='btn-sqlic-oracle' class='button-small'>Oracle</a>
+		<a id='btn-sqlic-mssql' class='button-small'>Microsoft</a>
+	</div>
+
+	<h4>Input</h4>
+	<textarea id="input" class="tutils-txt" cols="4" rows="4" spellcheck="false"></textarea>
+	<h4>Output</h4>
+	<textarea id="output" class="tutils-txt" cols="4" rows="4" spellcheck="false"></textarea>
+	</div>
+	<a id="btn-back" class="button">Back</a>
+
+	<!-- Placed at the end of the document so the page loads a bit faster -->
+	<script src="/lib/md5.min.js"></script>
+	<script src="/lib/sha.js"></script>
+	<script src="/lib/beautify.min.js"></script>
+	<script src="/lib/beautify-css.min.js"></script>
+	<script src="../js/tutils.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,65 @@
+{
+	"appName": {
+		"message": "SourTools"
+	},
+    "appDescript": {
+        "message": "A multitool for me personally."
+    },
+	 "webToolReqFail": {
+		"message": "Couldn't retrieve data!\n"
+	},
+	"webToolDefaultMsg": {
+		"message": "Pick a tool, read the description and click \"Run\" to run it"
+	},
+	"webToolSpiderMsg": {
+		"message": "A simple web spider."
+	},
+	"webToolRobobustMsg": {
+		"message": "Scans locations in robots.txt"
+	},
+	"webToolSinfoMsg": {
+		"message": "Grab site information from a number of online resources"
+	},
+	"webToolDirbustMsg": {
+		"message": "Brute force directories and files names on web servers"
+	},
+	"webToolCscanMsg": {
+		"message": "Perform requests specified by the user"
+	},
+	"webToolNotImplemented": {
+		"message": "Not implemented yet!"
+	},
+	"webToolBadDomain": {
+		"message": "WebTools can't run on this domain!"
+	},
+	"sinfoNoTasks": {
+		"message": "Custom fetch has no tasks enabled. Check your settings!"
+	},
+	"general-Sleep": {
+		"message": "Delay between consecutive HTTP requests (in milliseconds)"
+	},
+	"robobust-Maxreq": {
+		"message": "Max Requests"
+	},
+	"sinfo-AlexarankOn": {
+		"message": "Alexa rank"
+	},
+	"sinfo-IpapiOn": {
+		"message": "Site ip address"
+	},
+	"sinfo-GooglecacheOn": {
+		"message": "Most recent archive using Google Cache"
+	},
+	"sinfo-ShodanOn": {
+		"message": "Grab data from shodan.io (Vulnerable software, Port Data, etc...)"
+	},
+	"sinfo-WhoisOn": {
+		"message": "Grab raw whois data from whois-search.com"
+	},
+	"sscan-DirsecOn": {
+		"message": "See if private directories might be open to the public"
+	},
+	"dirbuster-Maxreq": {
+		"message": "Max Directories"
+	}
+}
